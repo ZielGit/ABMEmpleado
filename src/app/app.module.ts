@@ -5,17 +5,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { AddEditEmpleadoComponent } from './components/add-edit-empleado/add-edit-empleado.component';
+import { ListEmpleadoComponent } from './components/list-empleado/list-empleado.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { MensajeConfirmcionComponent } from './components/shared/mensaje-confirmcion/mensaje-confirmcion.component';
+import { AngularMaterialModule } from './components/shared/angular-material/angular-material.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddEditEmpleadoComponent,
+    ListEmpleadoComponent,
+    NavbarComponent,
+    MensajeConfirmcionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSlideToggleModule
+    AngularMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
