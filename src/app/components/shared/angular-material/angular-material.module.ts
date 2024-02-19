@@ -4,17 +4,20 @@ import { CommonModule } from '@angular/common';
 // Angular Material
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     MatSlideToggleModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTableModule
   ],
   exports: [
     MatSlideToggleModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTableModule
   ]
 })
 export class AngularMaterialModule { }
