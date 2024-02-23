@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [],
@@ -12,12 +14,16 @@ import { MatTableModule } from '@angular/material/table';
     CommonModule,
     MatSlideToggleModule,
     MatToolbarModule,
-    MatTableModule
+    MatTableModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   exports: [
     MatSlideToggleModule,
     MatToolbarModule,
-    MatTableModule
+    MatTableModule,
+    MatInputModule,
+    MatFormFieldModule
   ]
 })
 export class AngularMaterialModule { }
