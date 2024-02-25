@@ -6,6 +6,7 @@ import { EmpleadoService } from 'src/app/services/empleado.service';
 import { Empleado } from 'src/app/models/empleado';
 import { MatDialog } from '@angular/material/dialog';
 import { MensajeConfirmcionComponent } from '../shared/mensaje-confirmcion/mensaje-confirmcion.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-list-empleado',
@@ -20,7 +21,8 @@ export class ListEmpleadoComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator = <MatPaginator>{};
   @ViewChild(MatSort) sort: MatSort = <MatSort>{};
 
-  constructor(private empleadoService: EmpleadoService, public dialog: MatDialog) { }
+  constructor(private empleadoService: EmpleadoService, public dialog: MatDialog,
+    public snackBar: MatSnackBar) { }
 
   ngAfterViewInit() {
     this.cargarEmpleados();
@@ -48,6 +50,9 @@ export class ListEmpleadoComponent implements AfterViewInit {
       if (result === 'aceptar') {
         this.empleadoService.eliminarEmpleado(index);
         this.cargarEmpleados();
+        this.snackBar.open('El empleado fue eliminado con exito!', '', {
+          duration: 30000
+        });
       }
     });
   }
