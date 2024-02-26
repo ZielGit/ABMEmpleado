@@ -5,52 +5,81 @@
 </div>
 <div class="row">
     <div class="col-md-4">
-        <form action="" autocomplete="off">
+        <form [formGroup]="myForm" autocomplete="off">
             <div class="col-md-12">
                 <mat-form-field class="example-container" [style.fontSize.px]="16">
                     <mat-label>Nombre Completo</mat-label>
-                    <input matInput>
+                    <input matInput formControlName="nombreCompleto">
                 </mat-form-field>
+                <div *ngIf="myForm.get('nombreCompleto')?.hasError('required') && myForm.get('nombreCompleto')?.touched" style="margin-top:-20px;">
+                    <span class="mda-form-msg">Este campo es <strong>requerido</strong></span>
+                </div>
+                <div *ngIf="myForm.get('nombreCompleto')?.hasError('maxlength') && myForm.get('nombreCompleto')?.touched" style="margin-top:-20px;">
+                    <span class="mda-form-msg">El campo debe tener como maximo <strong>20 caracteres</strong></span>
+                </div>
             </div>
             <div class="col-md-12">
                 <mat-form-field class="example-container" [style.fontSize.px]="16">
                     <mat-label>Correo</mat-label>
-                    <input matInput>
+                    <input matInput formControlName="correo">
                 </mat-form-field>
+                <div *ngIf="myForm.get('correo')?.hasError('required') && myForm.get('correo')?.touched" style="margin-top:-20px;">
+                    <span class="mda-form-msg">Este campo es <strong>requerido</strong></span>
+                </div>
+                <div *ngIf="myForm.get('correo')?.hasError('email') && myForm.get('correo')?.touched" style="margin-top:-20px;">
+                    <span class="mda-form-msg">Este campo es <strong>requerido</strong></span>
+                </div>
             </div>
             <div class="col-md-12">
                 <mat-form-field class="example-container">
                     <mat-label>Fecha Ingreso</mat-label>
-                    <input matInput [matDatepicker]="picker">
+                    <input matInput [matDatepicker]="picker" formControlName="fechaIngreso">
                     <mat-hint>MM/DD/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker touchUi #picker></mat-datepicker>
                 </mat-form-field>
+                <div *ngIf="myForm.get('fechaIngreso')?.hasError('required') && myForm.get('fechaIngreso')?.touched" style="margin-top:-20px;">
+                    <span class="mda-form-msg">Este campo es <strong>requerido</strong></span>
+                </div>
             </div>
             <br>
             <div class="col-md-12">
                 <mat-form-field class="example-container" [style.fontSize.px]="16">
                     <mat-label>Telefono</mat-label>
-                    <input matInput>
+                    <input matInput formControlName="telefono">
                 </mat-form-field>
+                <div *ngIf="myForm.get('telefono')?.hasError('required') && myForm.get('telefono')?.touched" style="margin-top:-20px;">
+                    <span class="mda-form-msg">Este campo es <strong>requerido</strong></span>
+                </div>
             </div>
             <div class="col-md-12">
                 <mat-form-field class="example-container">
                     <mat-label>Estado Civil</mat-label>
-                    <mat-select>
-                        <mat-option *ngFor="let estadoCivil of estadosCiviles" [value]="estadoCivil">{{ estadoCivil }}</mat-option>
+                    <mat-select formControlName="estadoCivil">
+                        <mat-option *ngFor="let estadoCivil of estadosCiviles" [value]="estadoCivil">
+                            {{ estadoCivil }}
+                        </mat-option>
                     </mat-select>
                 </mat-form-field>
+                <div *ngIf="myForm.get('estadoCivil')?.hasError('required') && myForm.get('estadoCivil')?.touched" style="margin-top:-20px;">
+                    <span class="mda-form-msg">Este campo es <strong>requerido</strong></span>
+                </div>
             </div>
             <div class="col-md-12">
-                <mat-radio-group aria-label="Seleccione su Sexo">
+                <mat-radio-group aria-label="Seleccione su Sexo" formControlName="sexo">
                     <mat-radio-button value="Masculino" style="margin-right:10px;">Masculino</mat-radio-button>
                     <mat-radio-button value="Femenino">Femenino</mat-radio-button>
                 </mat-radio-group>
+                <div *ngIf="myForm.get('sexo')?.hasError('required') && myForm.get('sexo')?.touched" style="margin-top:-20px;">
+                    <span class="mda-form-msg">Este campo es <strong>requerido</strong></span>
+                </div>
             </div>
             <br>
             <div class="col-md-12">
-                <button type="button" class="btn btn-success btn-lg float-end" style="margin-left:10px;">Aceptar</button>
+                <button type="button" class="btn btn-success btn-lg float-end" style="margin-left:10px;" 
+                    (click)="guardarEmpleado()" [disabled]="myForm.invalid">
+                    Aceptar
+                </button>
                 <button type="button" class="btn btn-secondary btn-lg float-end" routerLink="/">Cancelar</button>
             </div>
         </form>

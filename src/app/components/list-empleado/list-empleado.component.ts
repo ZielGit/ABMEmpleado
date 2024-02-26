@@ -51,7 +51,7 @@ export class ListEmpleadoComponent implements AfterViewInit {
         this.empleadoService.eliminarEmpleado(index);
         this.cargarEmpleados();
         this.snackBar.open('El empleado fue eliminado con exito!', '', {
-          duration: 30000
+          duration: 3000
         });
       }
     });
