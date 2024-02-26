@@ -6,3 +6,7 @@ simple-snack-bar div {
     margin: auto;
     text-align: center;
 }
+
+button:focus {
+    outline: none;
+}
